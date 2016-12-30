@@ -147,6 +147,13 @@
     {  // Bandcamp
       selector: "a.play-btn, div.playbutton, span.item_link_play",
       create: PlayPause.MultiButtonHtml5Player
+    },
+    { // Google Play Music
+      regex: /.*play\.google\.com\/music.*/,
+      selector: "#player-bar-play-pause",
+      playingClass: "playing",
+      waitForButton: true,
+      create: PlayPause.SingleButtonGenericPlayer
     }
   ];
 
