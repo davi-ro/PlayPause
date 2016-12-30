@@ -322,6 +322,6 @@
     simplePrefs.on("choose-hotkey", chooseHotkey);
     resetPageMod();
     resetHotkey();
-    createButton();
+    //createButton();
   };
 })();
