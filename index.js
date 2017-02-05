@@ -37,7 +37,8 @@
   }
 
   function getTabLabelElement(xulTab) {
-    return xulTab.ownerDocument.getAnonymousElementByAttribute(xulTab, "class", "tab-text tab-label");
+    let tabLabelContainer = xulTab.ownerDocument.getAnonymousElementByAttribute(xulTab, "class", "tab-label-container");
+    return tabLabelContainer || xulTab.ownerDocument.getAnonymousElementByAttribute(xulTab, "class", "tab-text tab-label");
   }
 
   function addPlayPauseSymbol(xulTab) {
