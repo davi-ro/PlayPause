@@ -1,6 +1,6 @@
 //     This file is part of Play/Pause extension for Mozilla Firefox
 //     https://github.com/DanielKamkha/PlayPauseFirefox
-//     (c) 2015-2016 Daniel Kamkha
+//     (c) 2015-2017 Daniel Kamkha
 //     Play/Pause is free software distributed under the terms of the MIT license.
 
 (function() {
@@ -149,6 +149,12 @@
       selector: "#player-bar-play-pause",
       playingClass: "playing",
       waitForButton: true,
+      create: PlayPause.SingleButtonGenericPlayer
+    },
+    { // Yandex Music
+      regex: /.*music\.yandex\.ru.*/,
+      selector: "div.player-controls__btn_play",
+      playingClass: " player-controls__btn_pause", // HACK: preceding space is important!
       create: PlayPause.SingleButtonGenericPlayer
     },
     {  // Bandcamp

@@ -1,10 +1,7 @@
 //     This file is part of Play/Pause extension for Mozilla Firefox
 //     https://github.com/DanielKamkha/PlayPauseFirefox
-//     (c) 2015-2016 Daniel Kamkha
+//     (c) 2015-2017 Daniel Kamkha
 //     Play/Pause is free software distributed under the terms of the MIT license.
-
-// TODO: Twitch front page observer
-// TODO: iHeartRadio "buffering" class as playing
 
 // TODO: toggle button icon
 
