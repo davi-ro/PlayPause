@@ -158,6 +158,13 @@
       playingClass: " player-controls__btn_pause", // HACK: preceding space is important!
       create: PlayPause.SingleButtonGenericPlayer
     },
+    { // vk.com
+      regex: /.*vk\.com.*/,
+      selector: "button.top_audio_player_play",
+      indicatorSelector: "#top_audio_player",
+      playingClass: "top_audio_player_playing",
+      create: PlayPause.SingleButtonGenericPlayer
+    },
     {  // Bandcamp
       selector: "a.play-btn, div.playbutton, span.item_link_play",
       create: PlayPause.MultiButtonHtml5Player
