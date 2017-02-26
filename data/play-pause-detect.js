@@ -173,6 +173,13 @@
       waitForButton: true,
       create: PlayPause.TwoButtonGenericPlayer
     },
+    { // player.fm
+      regex: /.*player\.fm.*/,
+      playButtonSelector: "button.play",
+      pauseButtonSelector: "button.pause",
+      waitForButton: true,
+      create: PlayPause.TwoButtonGenericPlayer
+    },
     {  // Bandcamp
       selector: "a.play-btn, div.playbutton, span.item_link_play",
       create: PlayPause.MultiButtonHtml5Player
