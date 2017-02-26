@@ -57,7 +57,7 @@
       waitForButton: true,
       create: PlayPause.SingleButtonGenericPlayer
     },
-    { // 8tracks
+    { // 8tracks // probably broken
       regex: /.*8tracks\.com.*/,
       playButtonSelector: "#player_play_button",
       pauseButtonSelector: "#player_pause_button",
@@ -164,6 +164,14 @@
       indicatorSelector: "#top_audio_player",
       playingClass: "top_audio_player_playing",
       create: PlayPause.SingleButtonGenericPlayer
+    },
+    { // TED talks
+      regex: /.*www\.ted\.com.*/,
+      playButtonSelector: "a.controls__play",
+      pauseButtonSelector: "a.controls__pause",
+      indicatorSelector: "div.controls",
+      waitForButton: true,
+      create: PlayPause.TwoButtonGenericPlayer
     },
     {  // Bandcamp
       selector: "a.play-btn, div.playbutton, span.item_link_play",

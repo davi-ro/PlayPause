@@ -12,10 +12,17 @@
     this._pauseButton = win.document.querySelector(playerData.pauseButtonSelector);
     this._observer = null;
 
+    if (playerData.indicatorSelector) {
+      this._indicator = win.document.querySelector(playerData.indicatorSelector);
+    }
+
     let that = this;
     function initButtonObserver() {
-      that._observer = new MutationObserver(() => { PlayPause.emitStateChanged(id); });
-      that._observer.observe(that._playButton, {attributes: true, attributeFilter: ["style"]});
+      let indicator = that.getIndicator();
+      if (indicator) {
+        that._observer = new MutationObserver(() => { PlayPause.emitStateChanged(id); });
+        that._observer.observe(indicator, {attributes: true});
+      }
     }
 
     if (!this._playButton || !this._pauseButton) {
@@ -42,10 +49,15 @@
   Object.defineProperty(
     TwoButtonGenericPlayer.prototype,
     "paused",
-    { get: function() { return this._playButton ? this._playButton.style.display !== "none" : null; } }
+    {
+      get: function() {
+        return this._playButton ? getComputedStyle(this._playButton).getPropertyValue("display") !== "none" : null;
+      }
+    }
   );
   TwoButtonGenericPlayer.prototype.play = function() { if (this.paused) { this._playButton.click(); } };
   TwoButtonGenericPlayer.prototype.pause = function() { if (!this.paused) { this._pauseButton.click(); } };
+  TwoButtonGenericPlayer.prototype.getIndicator = function() { return this._indicator || this._playButton; };
   TwoButtonGenericPlayer.prototype.destroy = function() { if (this._observer) { this._observer.disconnect(); } };
 
   window.PlayPause = window.PlayPause || {};
