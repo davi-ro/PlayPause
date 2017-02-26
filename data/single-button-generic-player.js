@@ -9,7 +9,7 @@
   // TODO: generalize single- and two-button generic players
 
   function checkPausedByClass(elem, playingClass) {
-    return elem.className.indexOf(playingClass) === -1;
+    return elem.getAttribute("class").indexOf(playingClass) === -1;
   }
 
   function checkPausedByAttribute(elem, attributeName) {

@@ -84,8 +84,9 @@
     },
     { // Deezer
       regex: /.*\.deezer\.com.*/,
-      selector: ".control-play",
-      playingClass: "pause",
+      selector: "button.control-play",
+      indicatorSelector: "button.control-play svg.svg-icon",
+      playingClass: "svg-icon-pause",
       create: PlayPause.SingleButtonGenericPlayer
     },
     { // Jango
