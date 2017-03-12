@@ -34,6 +34,10 @@
   }
 
   function getTabLabelElement(xulTab) {
+    return xulTab.ownerDocument.getAnonymousElementByAttribute(xulTab, "class", "tab-text tab-label");
+  }
+
+  function getTabLabelContainer(xulTab) {
     let tabLabelContainer = xulTab.ownerDocument.getAnonymousElementByAttribute(xulTab, "class", "tab-label-container");
     return tabLabelContainer || xulTab.ownerDocument.getAnonymousElementByAttribute(xulTab, "class", "tab-text tab-label");
   }
@@ -63,7 +67,7 @@
       }, true);
 
       let tabContent = chromeDocument.getAnonymousElementByAttribute(xulTab, "class", "tab-content");
-      let tabLabel = getTabLabelElement(xulTab);
+      let tabLabel = getTabLabelContainer(xulTab);
       if (tabLabel) {
         tabContent.insertBefore(playPause, tabLabel);
       } else {
