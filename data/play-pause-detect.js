@@ -9,8 +9,8 @@
   const generalPlayers = [
     {  // YouTube HTML5 on-site
       regex: /.*youtube\.com.*/,
-      selector: ".ytp-play-button",
-      indicatorSelector: "#movie_player",
+      selector: "button.ytp-play-button",
+      indicatorSelector: "div.html5-video-player",
       playingClass: "playing-mode",
       waitForButton: true,
       create: PlayPause.SingleButtonGenericPlayer
@@ -187,17 +187,6 @@
   ];
 
   const embedPlayers = [
-    {  // YouTube HTML5 embedded
-      selector: ".ytp-play-button",
-      create: PlayPause.MultiButtonHtml5Player
-    },
-    {  // YouTube Flash embedded
-      selector: "object, embed",
-      srcRegex: /.*\.youtube\.com.*/,
-      stateGetterName: "getPlayerState",
-      playStateValue: 1,
-      create: PlayPause.DirectAccessFlashPlayer
-    },
     {  // Twitch.tv embedded
       regex: /.*twitch\.tv.*/,
       selector: "button.player-button--playpause",
