@@ -109,8 +109,9 @@
       create: PlayPause.SingleButtonGenericPlayer
     },
     { // Spotify
-      regex: /.*play\.spotify\.com.*/,
-      selector: "#play-pause",
+      regex: /.*open\.spotify\.com.*/,
+      selector: "button.spoticon-play-16, button.spoticon-pause-16",
+      playingClass: "spoticon-pause-16",
       create: PlayPause.SingleButtonGenericPlayer
     },
     { // Pocket Casts
