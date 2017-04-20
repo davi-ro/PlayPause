@@ -29,11 +29,15 @@
       playingClass: "player-bar-btn--pause",
       create: PlayPause.SingleButtonGenericPlayer
     },
-    { // Pandora
+    { // Pandora (Ooyala Flash embedded)
       regex: /.*\.pandora\.com.*/,
-      playButtonSelector: ".playButton",
-      pauseButtonSelector: ".pauseButton",
-      create: PlayPause.TwoButtonGenericPlayer
+      selector: "object, embed",
+      srcRegex: /.*player\.ooyala\.com.*/,
+      stateGetterName: "getState",
+      playStateValue: "playing",
+      playFuncName: "playMovie",
+      pauseFuncName: "pauseMovie",
+      create: PlayPause.DirectAccessFlashPlayer
     },
     { // SoundCloud on-site
       regex: /.*soundcloud\.com.*/,
