@@ -185,6 +185,12 @@
       waitForButton: true,
       create: PlayPause.TwoButtonGenericPlayer
     },
+    { // franceculture.fr
+      regex: /.*franceculture\.fr.*/,
+      selector: "#player button.player-button.play",
+      playingClass: "playing",
+      create: PlayPause.SingleButtonGenericPlayer
+    },
     {  // Bandcamp
       selector: "a.play-btn, div.playbutton, span.item_link_play",
       create: PlayPause.MultiButtonHtml5Player
