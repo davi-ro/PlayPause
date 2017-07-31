@@ -192,6 +192,12 @@
       playingClass: "playing",
       create: PlayPause.SingleButtonGenericPlayer
     },
+    { // Qobuz
+      regex: /.*play\.qobuz\.com.*/,
+      selector: "span.pct-player-play, span.pct-player-pause",
+      playingClass: "pct-player-pause",
+      create: PlayPause.SingleButtonGenericPlayer
+    },
     {  // Bandcamp
       selector: "a.play-btn, div.playbutton, span.item_link_play",
       create: PlayPause.MultiButtonHtml5Player
