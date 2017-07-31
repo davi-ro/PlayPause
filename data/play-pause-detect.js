@@ -101,8 +101,9 @@
     },
     { // iHeartRadio
       regex: /.*\.iheart\.com.*/,
-      selector: "button.play",
-      playingClass: "playing", // TODO: add "buffering" class
+      selector: "button.playButton",
+      playingClass: "play-PlayButton",
+      invertedCheck: true,
       create: PlayPause.SingleButtonGenericPlayer
     },
     { // Slacker

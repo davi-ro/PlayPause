@@ -6,8 +6,6 @@
 (function() {
   "use strict";
 
-  // TODO: generalize single- and two-button generic players
-
   function checkPausedByClass(elem, playingClass) {
     return elem.getAttribute("class").indexOf(playingClass) === -1;
   }
@@ -24,6 +22,7 @@
     this._observer = null;
     this._playingClass = playerData.playingClass || "playing";
     this._pausedChecker = playerData.indicatorTypeAttribute ? checkPausedByAttribute : checkPausedByClass;
+    this._invertedCheck = playerData.invertedCheck;
 
     if (playerData.indicatorSelector) {
       this._indicator = win.document.querySelector(playerData.indicatorSelector);
@@ -72,8 +71,15 @@
     "paused",
     {
       get: function() {
-        return this._currentPlayer && this._currentPlayer.className.indexOf("disabled") === -1 ?
-          this._pausedChecker(this.getIndicator(), this._playingClass) : null;
+        if (this._currentPlayer && this._currentPlayer.className.indexOf("disabled") === -1) {
+          let pausedCheckerResult = this._pausedChecker(this.getIndicator(), this._playingClass);
+          if (this._invertedCheck) {
+            pausedCheckerResult = !pausedCheckerResult;
+          }
+          return pausedCheckerResult;
+        } else {
+          return null;
+        }
       }
     }
   );
