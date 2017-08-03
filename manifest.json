@@ -1,0 +1,44 @@
+{
+  "manifest_version": 2,
+  "name": "Play/Pause",
+  "version": "2.0.0",
+  "applications": {
+    "gecko": {
+      "id": "@play-pause"
+    }
+  },
+  "icons": {
+    "48": "icon.png"
+  },
+  "author": "Daniel Kamkha",
+  "description": "Play/pause video and audio with the \"mute\" button.",
+  "homepage_url": "https://github.com/DanielKamkha/PlayPause",
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "data/play-pause-base.js",
+        "data/buttonless-html5-player.js",
+        "data/multibutton-html5-player.js",
+        "data/single-button-generic-player.js",
+        "data/two-button-generic-player.js",
+        "data/direct-access-flash-player.js",
+        "data/play-pause-detect.js",
+        "data/content-script.js"]
+    }
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "commands": {
+    "toggle-play-pause": {
+      "suggested_key": {
+        "default": "Alt+Shift+P"
+      },
+      "description": "Toggle Play/Pause"
+    }
+  }
+}

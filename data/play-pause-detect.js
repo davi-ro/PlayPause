@@ -1,5 +1,5 @@
 //     This file is part of Play/Pause extension for Mozilla Firefox
-//     https://github.com/DanielKamkha/PlayPauseFirefox
+//     https://github.com/DanielKamkha/PlayPause
 //     (c) 2015-2017 Daniel Kamkha
 //     Play/Pause is free software distributed under the terms of the MIT license.
 
@@ -221,14 +221,6 @@
       playFuncName: "playMovie",
       pauseFuncName: "pauseMovie",
       create: PlayPause.DirectAccessFlashPlayer
-    },
-    { // SoundCloud embedded
-      selector: "button.playButton", // TODO: very bad condition, too generic
-      create: PlayPause.SingleButtonGenericPlayer
-    },
-    {  // Generic catch-all HTML5 media
-      selector: PlayPause.mediaSelector,
-      create: PlayPause.ButtonlessHtml5Player
     }
   ];
 
@@ -245,10 +237,7 @@
       }
     }
 
-    let playerDataList = generalPlayers;
-    if (PlayPause.options.doEmbeds) {
-      playerDataList = generalPlayers.concat(embedPlayers);
-    }
+    let playerDataList = generalPlayers.concat(embedPlayers);
     for (let i = 0; i < playerDataList.length; i++) {
       let playerData = playerDataList[i];
       let player = null;
@@ -265,6 +254,5 @@
   }
 
   window.PlayPause = window.PlayPause || {};
-  window.PlayPause.options = {};
   window.PlayPause.detectPlayer = detectPlayer;
 })();

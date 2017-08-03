@@ -1,5 +1,5 @@
 //     This file is part of Play/Pause extension for Mozilla Firefox
-//     https://github.com/DanielKamkha/PlayPauseFirefox
+//     https://github.com/DanielKamkha/PlayPause
 //     (c) 2015-2017 Daniel Kamkha
 //     Play/Pause is free software distributed under the terms of the MIT license.
 
@@ -20,7 +20,7 @@
     function initButtonObserver() {
       let indicator = that.getIndicator();
       if (indicator) {
-        that._observer = new MutationObserver(() => { PlayPause.emitStateChanged(id); });
+        that._observer = new MutationObserver(() => { PlayPause.notifyStateChanged(id); });
         that._observer.observe(indicator, {attributes: true});
       }
     }
@@ -31,7 +31,7 @@
           that._playButton = buttonElem;
           that._pauseButton = that._playButton.parentNode.querySelector(playerData.pauseButtonSelector);
           initButtonObserver();
-          PlayPause.emitStateChanged(id);
+          PlayPause.notifyStateChanged(id);
         }
       );
     } else {

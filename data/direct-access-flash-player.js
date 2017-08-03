@@ -1,5 +1,5 @@
 //     This file is part of Play/Pause extension for Mozilla Firefox
-//     https://github.com/DanielKamkha/PlayPauseFirefox
+//     https://github.com/DanielKamkha/PlayPause
 //     (c) 2015-2017 Daniel Kamkha
 //     Play/Pause is free software distributed under the terms of the MIT license.
 
@@ -54,7 +54,7 @@
         let newState = that._currentPlayer[stateGetterName]() !== playStateValue;
         if (newState !== that._paused) {
           that._paused = newState;
-          PlayPause.emitStateChanged(id);
+          PlayPause.notifyStateChanged(id);
         }
       }
     }

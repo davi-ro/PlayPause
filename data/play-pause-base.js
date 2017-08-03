@@ -1,5 +1,5 @@
 //     This file is part of Play/Pause extension for Mozilla Firefox
-//     https://github.com/DanielKamkha/PlayPauseFirefox
+//     https://github.com/DanielKamkha/PlayPause
 //     (c) 2015-2017 Daniel Kamkha
 //     Play/Pause is free software distributed under the terms of the MIT license.
 
@@ -42,10 +42,6 @@
     });
   }
 
-  function emitStateChanged(id) {
-    self.port.emit("stateChanged", id);
-  }
-
   function PlayerBase() { throw "PlayerBase is a base 'abstract' class. It is not meant to be instantiated."; }
   Object.defineProperty(PlayerBase.prototype, "paused", { get: function() { return this._paused; } } );
   PlayerBase.prototype.play = function() {
@@ -63,6 +59,5 @@
   window.PlayPause.mediaSelector = mediaSelector;
   window.PlayPause.waitForElement = waitForElement;
   window.PlayPause.waitForElementPromise = waitForElementPromise;
-  window.PlayPause.emitStateChanged = emitStateChanged;
   window.PlayPause.PlayerBase = PlayerBase;
 })();

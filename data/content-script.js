@@ -1,23 +1,24 @@
 //     This file is part of Play/Pause extension for Mozilla Firefox
-//     https://github.com/DanielKamkha/PlayPauseFirefox
+//     https://github.com/DanielKamkha/PlayPause
 //     (c) 2015-2017 Daniel Kamkha
 //     Play/Pause is free software distributed under the terms of the MIT license.
 
 (function() {
   "use strict";
 
-  const iframeForceList = [
-    /.*play\.spotify\.com.*/,
-    /.*twitch\.tv.*/
-  ];
+  let browser = chrome || browser;
 
   let playersList = null;
   let activePlayer = null;
   let nextPlayerId = 0;
 
-  function togglePlayPause() {
+  function togglePlayPause(message) {
+    if (message.message !== "toggle") {
+      return;
+    }
+
     let paused = getPausedState();
-    if (paused !== null) {
+    if (paused !== null && paused !== message.paused) {
       if (paused) {
         activePlayer = activePlayer || playersList[0];
         activePlayer.play();
@@ -47,58 +48,40 @@
     }, null);
   }
 
-  function emitPausedState(id) {
+  function notifyStateChanged(id) {
     let paused = getPausedState();
     if (paused !== null) {
       if (!paused && id !== undefined) {
         activePlayer = playersList[id];
       }
-      self.port.emit("paused", paused);
+      browser.runtime.sendMessage({message: "stateChanged", paused: paused});
     }
   }
 
-  function forceIframesBySite(url) {
-    return iframeForceList.some((regex) => regex.test(url));
-  }
-
-  function doAttach(options) {
-    PlayPause.options = options;
+  function doAttach() {
     playersList = [];
     let player = PlayPause.detectPlayer(nextPlayerId, window);
     if (player) {
       ++nextPlayerId;
       playersList.push(player);
     }
-    if (options.doEmbeds || forceIframesBySite(window.location.href)) {
-      let iframes = document.querySelectorAll("iframe");
-      for (let i = 0; i < iframes.length; i++) {
-        player = PlayPause.detectPlayer(nextPlayerId, iframes[i].contentWindow);
-        if (player) {
-          ++nextPlayerId;
-          playersList.push(player);
-        }
+    let iframes = document.querySelectorAll("iframe");
+    for (let i = 0; i < iframes.length; i++) {
+      player = PlayPause.detectPlayer(nextPlayerId, iframes[i].contentWindow);
+      if (player) {
+        ++nextPlayerId;
+        playersList.push(player);
       }
     }
     if (playersList.length === 0) {
       playersList = null;
-      self.port.emit("disable");
       return;
     }
 
-    self.port.emit("init");
-
-    self.port.on("toggle", togglePlayPause);
-    self.port.on("query", emitPausedState);
-    self.port.on("detach", doDetach);
+    browser.runtime.onMessage.addListener(togglePlayPause);
   }
 
-  function doDetach(reason) {
-    if (playersList) {
-      playersList.forEach(function(player) { player.destroy(reason); });
-      playersList = null;
-    }
-  }
+  window.PlayPause.notifyStateChanged = notifyStateChanged;
 
-  self.port.once("options", doAttach);
-  self.port.emit("options");
+  doAttach();
 })();

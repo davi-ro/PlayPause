@@ -1,13 +1,15 @@
 # Play/Pause
 
-A Firefox extension that adds a Play/Pause toggle onto tabs that contain an HTML5 audio/video player.
+A browser extension for Chrome and Firefox that plays/pauses video and audio with the "mute" button.
 
 
 ## Usage
-You can get it here: https://addons.mozilla.org/firefox/addon/play-pause/
+Chrome version: N/A yet
+
+Firefox version: https://addons.mozilla.org/firefox/addon/play-pause/
 
 ## Background
-Some audio/video sites add a small 'Play' indicator to the tab title when the media is playing. Which is nice. But I always wanted to be able to click on that thing and pause the playback without switching to that tab. Good news: now I can. And so can you.
+Mute/unmute button on the tab title pauses/unpauses media playback in the tab instead for the supported sites.
 
 ## License
 All source code in this project are licensed under the MIT license.
