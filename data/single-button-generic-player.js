@@ -1,4 +1,4 @@
-//     This file is part of Play/Pause extension for Mozilla Firefox
+//     This file is part of Play/Pause extension for Chrome and Firefox
 //     https://github.com/DanielKamkha/PlayPause
 //     (c) 2015-2017 Daniel Kamkha
 //     Play/Pause is free software distributed under the terms of the MIT license.
