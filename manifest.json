@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Play/Pause",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "applications": {
     "gecko": {
       "id": "@play-pause"
@@ -19,6 +19,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
+      "exclude_matches": ["*://*.allmusic.com/*", "*://*.facebook.com/*", "*://*.inoreader.com/*"],
       "js": [
         "data/play-pause-base.js",
         "data/buttonless-html5-player.js",
@@ -33,8 +34,9 @@
   "permissions": [
     "storage"
   ],
+  "browser_action": {},
   "commands": {
-    "toggle-play-pause": {
+    "_execute_browser_action": {
       "suggested_key": {
         "default": "Alt+Shift+P"
       },

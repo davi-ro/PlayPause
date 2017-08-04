@@ -221,7 +221,11 @@
       playFuncName: "playMovie",
       pauseFuncName: "pauseMovie",
       create: PlayPause.DirectAccessFlashPlayer
-    }
+    }/*,
+    {  // Generic catch-all HTML5 media
+      selector: PlayPause.mediaSelector,
+      create: PlayPause.ButtonlessHtml5Player
+    }*/
   ];
 
   function detectPlayer(id, win) {

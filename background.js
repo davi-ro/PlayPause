@@ -3,7 +3,8 @@
 //     (c) 2015-2017 Daniel Kamkha
 //     Play/Pause is free software distributed under the terms of the MIT license.
 
-// TODO: add page action, change command to "_execute_browser_action"
+// TODO: browser action dynamic tooltip and icon
+// TODO: bugged in Chrome
 
 (function() {
   "use strict";
@@ -40,13 +41,8 @@
     }
   }
 
-  function onCommand(command) {
-    if (command === "toggle-play-pause") {
-      smartPause();
-    }
-  }
-
   browser.tabs.onUpdated.addListener(onTabUpdated);
   browser.runtime.onMessage.addListener(onMessage);
-  browser.commands.onCommand.addListener(onCommand);
+  browser.browserAction.onClicked.addListener(smartPause);
 })();
+

@@ -1,10 +1,10 @@
 # Play/Pause
 
-A browser extension for Chrome and Firefox that plays/pauses video and audio with the "mute" button.
+A browser extension for Chrome and Firefox that plays/pauses video and audio with the "mute" action.
 
 
 ## Usage
-Chrome version: N/A yet
+Chrome version: https://chrome.google.com/webstore/detail/playpause/gkniiglpoemnjjgmjijojamjfmhblkga
 
 Firefox version: https://addons.mozilla.org/firefox/addon/play-pause/
 
