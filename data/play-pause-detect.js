@@ -198,7 +198,7 @@
       playingClass: "pct-player-pause",
       create: PlayPause.SingleButtonGenericPlayer
     },
-    {  // Bandcamp
+    {  // Bandcamp // TODO: bugged in Chrome
       selector: "a.play-btn, div.playbutton, span.item_link_play",
       create: PlayPause.MultiButtonHtml5Player
     }
@@ -221,11 +221,11 @@
       playFuncName: "playMovie",
       pauseFuncName: "pauseMovie",
       create: PlayPause.DirectAccessFlashPlayer
-    }/*,
+    },
     {  // Generic catch-all HTML5 media
       selector: PlayPause.mediaSelector,
       create: PlayPause.ButtonlessHtml5Player
-    }*/
+    }
   ];
 
   function detectPlayer(id, win) {

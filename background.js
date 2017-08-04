@@ -4,7 +4,7 @@
 //     Play/Pause is free software distributed under the terms of the MIT license.
 
 // TODO: browser action dynamic tooltip and icon
-// TODO: bugged in Chrome
+// TODO: fix Bandcamp bug in Chrome
 
 (function() {
   "use strict";
