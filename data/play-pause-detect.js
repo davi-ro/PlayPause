@@ -15,29 +15,11 @@
       waitForButton: true,
       create: PlayPause.SingleButtonGenericPlayer
     },
-    {  // YouTube Flash on-site
-      regex: /.*youtube\.com.*/,
-      selector: "object, embed",
-      srcRegex: /.*\.youtube\.com.*/,
-      stateGetterName: "getPlayerState",
-      playStateValue: 1,
-      create: PlayPause.DirectAccessFlashPlayer
-    },
     { // Last.fm
       regex: /.*\.last\.fm.*/,
       selector: "button.js-play-pause",
       playingClass: "player-bar-btn--pause",
       create: PlayPause.SingleButtonGenericPlayer
-    },
-    { // Pandora (Ooyala Flash embedded)
-      regex: /.*\.pandora\.com.*/,
-      selector: "object, embed",
-      srcRegex: /.*player\.ooyala\.com.*/,
-      stateGetterName: "getState",
-      playStateValue: "playing",
-      playFuncName: "playMovie",
-      pauseFuncName: "pauseMovie",
-      create: PlayPause.DirectAccessFlashPlayer
     },
     { // SoundCloud on-site
       regex: /.*soundcloud\.com.*/,
@@ -50,33 +32,22 @@
       playingClass: "pause",
       create: PlayPause.SingleButtonGenericPlayer
     },
-    { // Amazon Music
-      regex: /.*amazon\..*/,
-      selector: ".acs-mp3-play, .acs-mp3-pause, div.sample-button",
-      create: PlayPause.MultiButtonHtml5Player
-    },
-    { // Rdio
-      regex: /.*rdio\.com.*/,
-      selector: "button.play_pause",
-      waitForButton: true,
+    { // Pandora // TODO: broken
+      regex: /.*\.pandora\.com.*/,
+      selector: "button.PlayButton",
+      indicatorTypeAttribute: true,
+      playingClass: "data-qa",
       create: PlayPause.SingleButtonGenericPlayer
     },
-    { // 8tracks // probably broken
-      regex: /.*8tracks\.com.*/,
-      playButtonSelector: "#player_play_button",
-      pauseButtonSelector: "#player_pause_button",
-      waitForButton: true,
-      create: PlayPause.TwoButtonGenericPlayer
-    },
-    {  // Twitch.tv on-site
+    {  // Twitch.tv on-site // TODO: broken
       regex: /.*twitch\.tv.*/,
       selector: "button.player-button--playpause",
-      indicatorSelector: "div.player",
+      indicatorSelector: "#player",
       indicatorTypeAttribute: true,
       playingClass: "data-paused",
       create: PlayPause.SingleButtonGenericPlayer
     },
-    { // MySpace
+    { // MySpace // TODO: unverified
       regex: /.*myspace\.com.*/,
       selector: "button.play",
       create: PlayPause.SingleButtonGenericPlayer
@@ -86,6 +57,7 @@
       selector: "div.js-play-pause",
       create: PlayPause.MultiButtonHtml5Player
     },
+    
     { // Deezer
       regex: /.*\.deezer\.com.*/,
       selector: "button.control-play",
@@ -205,14 +177,6 @@
   ];
 
   const embedPlayers = [
-    {  // Twitch.tv embedded
-      regex: /.*twitch\.tv.*/,
-      selector: "button.player-button--playpause",
-      indicatorSelector: "div.player",
-      indicatorTypeAttribute: true,
-      playingClass: "data-paused",
-      create: PlayPause.SingleButtonGenericPlayer
-    },
     {  // Ooyala Flash embedded
       selector: "object, embed",
       srcRegex: /.*player\.ooyala\.com.*/,

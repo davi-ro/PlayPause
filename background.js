@@ -4,7 +4,10 @@
 //     Play/Pause is free software distributed under the terms of the MIT license.
 
 // TODO: browser action dynamic tooltip and icon
-// TODO: fix Bandcamp bug in Chrome
+// TODO: dark theme icons
+// TODO: investigate auto-mute side effect
+// TODO: investigate Facebook support
+// TODO: Chrome store icon and screenshots
 
 (function() {
   "use strict";
@@ -20,8 +23,17 @@
         tabsArePlaying = true;
       }
 
-      for (let tab of smartPausedTabs) {
-        browser.tabs.sendMessage(tab.id, {message: "toggle", paused: tabsArePlaying});
+      if (smartPausedTabs.length > 0) {
+        for (let tab of smartPausedTabs) {
+          browser.tabs.sendMessage(tab.id, {message: "toggle", paused: tabsArePlaying});
+        }
+      } else if (!tabsArePlaying) {
+        browser.tabs.query({active: true, currentWindow: true}, function(tabs) {
+          let tab = tabs[0];
+          if (tab) {
+            browser.tabs.sendMessage(tab.id, {message: "toggle", paused: false});
+          }
+        });
       }
     });
   }
