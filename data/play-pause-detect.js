@@ -89,6 +89,7 @@
       regex: /.*open\.spotify\.com.*/,
       selector: "button.spoticon-play-16, button.spoticon-pause-16",
       playingClass: "spoticon-pause-16",
+      waitForButton: true,
       create: PlayPause.SingleButtonGenericPlayer
     },
     { // Pocket Casts
