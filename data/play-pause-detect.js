@@ -8,11 +8,17 @@
 
   const generalPlayers = [
     {  // YouTube HTML5 on-site
-      regex: /.*youtube\.com.*/,
+      regex: /.*?!(music.)youtube\.com.*/,  // exclude music.youtube URL patterns
       selector: "button.ytp-play-button",
       indicatorSelector: "div.html5-video-player",
       playingClass: "playing-mode",
       waitForButton: true,
+      create: PlayPause.SingleButtonGenericPlayer
+    },
+    {  // YouTube Music
+      regex: /.*music.youtube\.com.*/,
+      selector: "button.ytp-play-button",
+      playingClass: "playing-mode",
       create: PlayPause.SingleButtonGenericPlayer
     },
     { // Last.fm
@@ -101,7 +107,7 @@
     { // Mixcloud
       regex: /.*\.mixcloud\.com.*/,
       selector: "div.player-control",
-      playingClass: "pause-state",
+      playingClass: "pause",
       create: PlayPause.SingleButtonGenericPlayer
     },
     { // Tidal
