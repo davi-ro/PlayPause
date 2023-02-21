@@ -4,7 +4,7 @@
   "version": "2.0.3",
   "applications": {
     "gecko": {
-      "id": "@play-pause"
+      "id": "play-pause-plus"
     }
   },
   "icons": {
@@ -12,7 +12,7 @@
   },
   "author": "Daniel Kamkha",
   "description": "Play/pause video and audio with the \"mute\" button.",
-  "homepage_url": "https://github.com/DanielKamkha/PlayPause",
+  "homepage_url": "https://github.com/davi-ro/PlayPause",
   "background": {
     "scripts": ["background.js"]
   },
